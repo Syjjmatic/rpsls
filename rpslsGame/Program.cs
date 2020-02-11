@@ -10,7 +10,9 @@ namespace rpslsGame
     {
         static void Main(string[] args)
         {
-
+            Gestures gestTest = new Gestures();
+            gestTest.Test();
+            Console.ReadLine();
         }
     }
 }
