@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace rpslsGame
 {
-    class Player
+    abstract class Player
     {
+        public abstract void PlayerScore();
+
     }
 }

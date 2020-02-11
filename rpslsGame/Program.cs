@@ -10,6 +10,7 @@ namespace rpslsGame
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

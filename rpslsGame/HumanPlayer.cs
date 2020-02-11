@@ -8,5 +8,9 @@ namespace rpslsGame
 {
     class HumanPlayer
     {
+        public HumanPlayer()
+        {
+
+        }
     }
 }
