@@ -11,6 +11,11 @@ namespace rpslsGame
         public string name;
         public int score;
 
+        public Player()
+        {
+            score = 0;
+        }
+
         public abstract void PlayerSelection();
     }
 }

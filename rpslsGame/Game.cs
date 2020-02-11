@@ -16,7 +16,7 @@ namespace rpslsGame
 
         public Game()
         {
-
+            gestures = new Gestures();
         }
 
         public void GameSetUp()
@@ -54,15 +54,23 @@ namespace rpslsGame
                 Console.WriteLine("\nEnter player two's name: ");
                 humanPlayer2.name = Console.ReadLine();
             }
-            else
+        }
+
+        public void MakeChoicePlayer1()
+        {
+            Console.Clear();
+            Console.WriteLine("Okay, " + humanPlayer1.name + ", choose your gesture!");
+            for (int i = 0; i < gestures.gestures.Count; i++)
             {
-                Console.WriteLine("You did not enter '1' or '2'. Please try again.");
+                Console.WriteLine(i + ".) " + gestures.gestures[i]);
             }
+            string choice = Console.ReadLine();
         }
 
         public void Initialize()
         {
             GameSetUp();
+            MakeChoicePlayer1();
         }
     }
 }

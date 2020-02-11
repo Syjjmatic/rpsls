@@ -8,11 +8,11 @@ namespace rpslsGame
 {
     class Gestures
     {
-        List<string> gestures;
+        public List<string> gestures;
+
         public Gestures()
         {
             gestures = new List<string> { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
-
         }
     }
 }
