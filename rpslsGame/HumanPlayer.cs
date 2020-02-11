@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace rpslsGame
 {
-    class HumanPlayer
+    class HumanPlayer : Player
     {
         public HumanPlayer()
+        {
+
+        }
+        public override void PlayerSelection()
         {
 
         }

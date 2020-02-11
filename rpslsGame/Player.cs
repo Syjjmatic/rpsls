@@ -8,7 +8,9 @@ namespace rpslsGame
 {
     abstract class Player
     {
-        public abstract void PlayerScore();
+        public string name;
+        public int score;
 
+        public abstract void PlayerSelection();
     }
 }

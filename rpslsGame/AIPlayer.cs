@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace rpslsGame
 {
-    class AIPlayer
+    class AIPlayer : Player
     {
         public AIPlayer()
+        {
+
+        }
+        
+        public override void PlayerSelection()
         {
 
         }
