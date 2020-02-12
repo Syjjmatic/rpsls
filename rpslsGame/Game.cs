@@ -19,13 +19,13 @@ namespace rpslsGame
         string intro;
         string rules;
 
+
         public Game()
         {
             gestures = new Gestures();
             humanPlayer1 = new HumanPlayer();
             humanPlayer2 = new HumanPlayer();
             aiPlayer2 = new AIPlayer();
-            string numberOfPlayers = SelectPlayers(); 
         }
 
         public void ScrollingText(string theString)
@@ -33,7 +33,7 @@ namespace rpslsGame
             for (int i = 0; i < theString.Length; i++)
             {
                 Console.Write(theString[i]);
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(30);
             }
         }
 
@@ -51,17 +51,29 @@ namespace rpslsGame
             Console.Clear();
             ScrollingText(rules);
             System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("\n\nPress any [Enter] to continue...");
+            Console.WriteLine("\n\nPress [Enter] to continue...");
             Console.ReadLine();
         }
 
         public string SelectPlayers()
         {
             Console.Clear();
-            string prompt = "One or two players? [Type '1' or '2']";
+            string prompt = "One or two players? [Type '1' or '2']\n";
+            string errorInput = "Your input is incorrect. Please type a '1' or '2'.\n";
             ScrollingText(prompt);
-            string input = Console.ReadLine();
-            return input;
+            string playerNumInput = Console.ReadLine();
+            while (playerNumInput != "1" && playerNumInput != "2")
+            {
+                Console.Clear();
+                ScrollingText(errorInput);
+                playerNumInput = Console.ReadLine();
+            }
+            return playerNumInput;
+        }
+
+        public void SetPlayers(string numberOfPlayers)
+        {
+
         }
 
         public void GameSetUp()
@@ -279,48 +291,50 @@ namespace rpslsGame
         {
             Intro();
             SelectPlayers();
-            GameSetUp();
-            if (input == "1")
-            {
-                while (humanPlayer1.score < 2 && aiPlayer2.score < 2)
-                {
-                    MakeChoicePlayer1();
-                    MakeChoiceAI();
-                    CompareCoicesHumanAI();
-                }
-                if (humanPlayer1.score > aiPlayer2.score)
-                {
-                    Console.Clear();
-                    Console.WriteLine(humanPlayer1.name + " WINS THE GAME!!");
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine(aiPlayer2 + " WINS THE GAME!!");
-                }
-            }
-            else if (input == "2")
-            {
-                while (humanPlayer1.score < 2 && humanPlayer2.score < 2)
-                {
-                    MakeChoicePlayer1();
-                    MakeChoicePlayer2();
-                    CompareChoicesHumanHuman();
+            //SetPlayers(SelectPlayers());
+            //SelectPlayers();
+            //GameSetUp();
+            //if (input == "1")
+            //{
+            //    while (humanPlayer1.score < 2 && aiPlayer2.score < 2)
+            //    {
+            //        MakeChoicePlayer1();
+            //        MakeChoiceAI();
+            //        CompareCoicesHumanAI();
+            //    }
+            //    if (humanPlayer1.score > aiPlayer2.score)
+            //    {
+            //        Console.Clear();
+            //        Console.WriteLine(humanPlayer1.name + " WINS THE GAME!!");
+            //    }
+            //    else
+            //    {
+            //        Console.Clear();
+            //        Console.WriteLine(aiPlayer2 + " WINS THE GAME!!");
+            //    }
+            //}
+            //else if (input == "2")
+            //{
+            //    while (humanPlayer1.score < 2 && humanPlayer2.score < 2)
+            //    {
+            //        MakeChoicePlayer1();
+            //        MakeChoicePlayer2();
+            //        CompareChoicesHumanHuman();
                    
-                }
-                if (humanPlayer1.score > humanPlayer2.score)
-                {
-                    Console.Clear();
-                    Console.WriteLine(humanPlayer1.name + " WINS THE GAME!!");
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine(humanPlayer2.name + " WINS THE GAME!!");
+            //    }
+            //    if (humanPlayer1.score > humanPlayer2.score)
+            //    {
+            //        Console.Clear();
+            //        Console.WriteLine(humanPlayer1.name + " WINS THE GAME!!");
+            //    }
+            //    else
+            //    {
+            //        Console.Clear();
+            //        Console.WriteLine(humanPlayer2.name + " WINS THE GAME!!");
 
-                }
+            //    }
 
-            }
+            //}
         }
     }
 }
