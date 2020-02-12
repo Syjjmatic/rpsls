@@ -8,28 +8,16 @@ namespace rpslsGame
 {
     class Game
     {
-        HumanPlayer humanPlayer1;
-        HumanPlayer humanPlayer2;
-        AIPlayer aiPlayer2;
-        //Gestures gestures;
-        string input;
-        string choice1;
-        string choice2;
-        int aiChoice;
+
         string intro;
         string rules;
         Player player1;
         Player player2;
-        List<string> gestures;
 
 
         public Game()
         {
-            //gestures = new Gestures();
-            gestures = new List<string> { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
-            humanPlayer1 = new HumanPlayer();
-            humanPlayer2 = new HumanPlayer();
-            aiPlayer2 = new AIPlayer();
+
         }
 
         public void ScrollingText(string theString)
@@ -94,7 +82,8 @@ namespace rpslsGame
             player1.ChooseName();
             player2.ChooseName();
         }
-        
+
+
         //public void GameSetUp()
         //{
         //    Console.WriteLine("\nOne or two players? [Type '1' or '2']");
@@ -211,99 +200,58 @@ namespace rpslsGame
         //    Console.ReadLine();
         //}
 
-        public void CompareChoicesHumanHuman()
+        public void CompareChoices()
         {
-            if (choice1 == choice2)
+            string tie = "Tie! Go again!";
+            string player1Round = player1.name + " wins the round!";
+            string player2Round = player2.name + " wins the round!";
+            
+
+            if (player1.choice == player2.choice)
             {
                 Console.Clear();
-                Console.WriteLine("Tie! Go again!");
+                ScrollingText(tie);
             }
-            else if (choice1 == "0" && (choice2 == "2" || choice2 == "3"))
+            else if (player1.choice == "0" && (player2.choice == "2" || player2.choice == "3"))
             {
                 Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
+                ScrollingText(player1Round);
+                player1.score++;
             }
-            else if (choice1 == "1" && (choice2 == "0" || choice2 == "4"))
+            else if (player1.choice == "1" && (player2.choice == "0" || player2.choice == "4"))
             {
                 Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
+                ScrollingText(player1Round);
+                player1.score++;
             }
-            else if (choice1 == "2" && (choice2 == "1" || choice2 == "3"))
+            else if (player1.choice == "2" && (player2.choice == "1" || player2.choice == "3"))
             {
                 Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
+                ScrollingText(player1Round);
+                player1.score++;
             }
-            else if (choice1 == "3" && (choice2 == "1" || choice2 == "4"))
+            else if (player1.choice == "3" && (player2.choice == "1" || player2.choice == "4"))
             {
                 Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
+                ScrollingText(player1Round);
+                player1.score++;
             }
-            else if (choice1 == "4" && (choice2 == "2" || choice2 == "0"))
+            else if (player1.choice == "4" && (player2.choice == "2" || player2.choice == "0"))
             {
                 Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
+                ScrollingText(player1Round);
+                player1.score++;
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine(humanPlayer2.name + " wins the round!");
-                humanPlayer2.score++;
+                ScrollingText(player2Round);
+                player2.score++;
             }
-            Console.WriteLine("\nHit any key to continue...");
+            string playersScoreReport = "\n" + player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score + ".";
+            ScrollingText(playersScoreReport);
+            Console.WriteLine("\n\nHit [Enter] to continue...");
             Console.ReadLine();
-        }
-
-        public void CompareCoicesHumanAI()
-        {
-            if (choice1 == choice2)
-            {
-                Console.Clear();
-                Console.WriteLine("Tie! Go again!");
-            }
-            else if (choice1 == "0" && (choice2 == "2" || choice2 == "3"))
-            {
-                Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
-            }
-            else if (choice1 == "1" && (choice2 == "0" || choice2 == "4"))
-            {
-                Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
-            }
-            else if (choice1 == "2" && (choice2 == "1" || choice2 == "3"))
-            {
-                Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
-            }
-            else if (choice1 == "3" && (choice2 == "1" || choice2 == "4"))
-            {
-                Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
-            }
-            else if (choice1 == "4" && (choice2 == "2" || choice2 == "0"))
-            {
-                Console.Clear();
-                Console.WriteLine(humanPlayer1.name + " wins the round!");
-                humanPlayer1.score++;
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine(aiPlayer2.name + " wins the round!");
-                aiPlayer2.score++;
-            }
-            Console.WriteLine("\nHit any key to continue...");
-            Console.ReadLine();
-
         }
 
         public void Initialize()
@@ -311,8 +259,17 @@ namespace rpslsGame
             Intro();
             SetPlayers(SelectPlayers());
             GetNames();
-            player1.Gestures();
-            player2.Gestures();
+            while(player1.score < 2 && player2.score <2)
+            {
+                player1.Gestures();
+                player2.Gestures();
+                CompareChoices();
+            }
+            if (player1.score > player2.score)
+            {
+
+            }
+            
 
             //SetPlayers(SelectPlayers());
             //SelectPlayers();

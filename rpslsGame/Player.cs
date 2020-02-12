@@ -12,11 +12,14 @@ namespace rpslsGame
         public int score;
         public string choice;
         public List<string> gestures;
+        public string nothingEntered;
+        public string playerNameRequest;
 
         public Player()
         {
             gestures = new List<string> { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
             score = 0;
+            nothingEntered = "You didn't enter anything. Try again.\n";
         }
 
         public void ScrollingText(string theString)

@@ -30,14 +30,15 @@ namespace rpslsGame
 
         public override void ChooseName()
         {
+            playerNameRequest = "Name your opponent (like in Pokemon): ";
             Console.Clear();
-            Console.WriteLine("Name your opponent (like in Pokemon): ");
+            ScrollingText(playerNameRequest);
             name = Console.ReadLine();
             while (name == "")
             {
                 Console.Clear();
-                Console.WriteLine("You didn't enter anything. Try again.");
-                Console.WriteLine("\nName your opponent (like in Pokemon): ");
+                ScrollingText(nothingEntered);
+                ScrollingText(playerNameRequest);
                 name = Console.ReadLine();
             }
         }
