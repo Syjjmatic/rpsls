@@ -13,9 +13,19 @@ namespace rpslsGame
 
         }
         
-        public override void ChooseGesture()
+        public override void Gestures()
         {
-
+            string randomGestureString = name + " chooses his gesture at random...\n";
+            Console.Clear();
+            ScrollingText(randomGestureString);
+            System.Threading.Thread.Sleep(1000);
+            Random rndGest = new Random();
+            int aiChoice = Convert.ToInt32(rndGest.Next(0, 4));
+            string aiGesture = name + " chooses " + gestures[aiChoice] + "!";
+            ScrollingText(aiGesture);
+            choice = Convert.ToString(aiChoice);
+            Console.WriteLine("\n\nHit [Enter] to continue... ");
+            Console.ReadLine();
         }
 
         public override void ChooseName()

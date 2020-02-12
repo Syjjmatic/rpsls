@@ -11,14 +11,26 @@ namespace rpslsGame
         public string name;
         public int score;
         public string choice;
+        public List<string> gestures;
 
         public Player()
         {
+            gestures = new List<string> { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
             score = 0;
         }
 
-        public abstract void ChooseGesture();
+        public void ScrollingText(string theString)
+        {
+            for (int i = 0; i < theString.Length; i++)
+            {
+                Console.Write(theString[i]);
+                System.Threading.Thread.Sleep(30);
+            }
+        }
 
         public abstract void ChooseName();
+
+        public abstract void Gestures();
+
     }
 }
