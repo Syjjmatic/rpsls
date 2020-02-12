@@ -25,6 +25,7 @@ namespace rpslsGame
             humanPlayer1 = new HumanPlayer();
             humanPlayer2 = new HumanPlayer();
             aiPlayer2 = new AIPlayer();
+            string numberOfPlayers = SelectPlayers(); 
         }
 
         public void ScrollingText(string theString)
@@ -44,21 +45,24 @@ namespace rpslsGame
                 "\nPAPER beats ROCK and SPOCK!" +
                 "\nSCISSORS beats PAPER and LIZARD!" +
                 "\nLIZARD beats SPOCK and and PAPER!" +
-                "\nSPOCK beats SCISSORS and ROCK!\n";
+                "\nSPOCK beats SCISSORS and ROCK!";
             ScrollingText(intro);
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             ScrollingText(rules);
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("\n\nPress any [Enter] to continue...");
+            Console.ReadLine();
         }
 
-        //public void SelectPlayers()
-        //{
-        //    string prompt = "\nOne or two players? [Type '1' or '2']";
-        //    for ()
-        //    {
-
-        //    }
-        //}
+        public string SelectPlayers()
+        {
+            Console.Clear();
+            string prompt = "One or two players? [Type '1' or '2']";
+            ScrollingText(prompt);
+            string input = Console.ReadLine();
+            return input;
+        }
 
         public void GameSetUp()
         {
@@ -274,6 +278,7 @@ namespace rpslsGame
         public void Initialize()
         {
             Intro();
+            SelectPlayers();
             GameSetUp();
             if (input == "1")
             {
