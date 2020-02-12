@@ -73,6 +73,16 @@ namespace rpslsGame
 
         public void SetPlayers(string numberOfPlayers)
         {
+            if (numberOfPlayers == "1")
+            {
+                Player player1 = new HumanPlayer();
+                Player player2 = new AIPlayer();
+            }
+            else if (numberOfPlayers == "2")
+            {
+                Player player1 = new HumanPlayer();
+                Player player2 = new HumanPlayer();
+            }
 
         }
 
