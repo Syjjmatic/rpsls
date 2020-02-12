@@ -18,6 +18,8 @@ namespace rpslsGame
         int aiChoice;
         string intro;
         string rules;
+        Player player1;
+        Player player2;
 
 
         public Game()
@@ -75,15 +77,20 @@ namespace rpslsGame
         {
             if (numberOfPlayers == "1")
             {
-                Player player1 = new HumanPlayer();
-                Player player2 = new AIPlayer();
+                player1 = new HumanPlayer();
+                player2 = new AIPlayer();
             }
             else if (numberOfPlayers == "2")
             {
-                Player player1 = new HumanPlayer();
-                Player player2 = new HumanPlayer();
+                player1 = new HumanPlayer();
+                player2 = new HumanPlayer();
             }
+        }
 
+        public void GetNames()
+        {
+            player1.ChooseName();
+            player2.ChooseName();
         }
 
         public void GameSetUp()
@@ -300,7 +307,8 @@ namespace rpslsGame
         public void Initialize()
         {
             Intro();
-            SelectPlayers();
+            SetPlayers(SelectPlayers());
+            GetNames();
             //SetPlayers(SelectPlayers());
             //SelectPlayers();
             //GameSetUp();

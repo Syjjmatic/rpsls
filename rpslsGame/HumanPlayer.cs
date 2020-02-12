@@ -19,6 +19,16 @@ namespace rpslsGame
 
         public override void ChooseName()
         {
+            Console.Clear();
+            Console.WriteLine("Enter player name: ");
+            name = Console.ReadLine();
+            while (name == "")
+            {
+                Console.Clear();
+                Console.WriteLine("You didn't enter anything. Try again.");
+                Console.WriteLine("\nEnter player name: ");
+                name = Console.ReadLine();
+            }
 
         }
     }
