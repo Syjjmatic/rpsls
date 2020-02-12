@@ -16,6 +16,8 @@ namespace rpslsGame
         string choice1;
         string choice2;
         int aiChoice;
+        string intro;
+        string rules;
 
         public Game()
         {
@@ -25,9 +27,32 @@ namespace rpslsGame
             aiPlayer2 = new AIPlayer();
         }
 
+        public void Intro()
+        {
+            intro = "Welcome to Rock, Paper, Scissors, Lizard, Spock!";
+            rules = "Rules: BEST OUT OF 3 WINS." +
+                "\nROCK beats SCISSORS and LIZARD!" +
+                "\nPAPER beats ROCK and SPOCK!" +
+                "\nSCISSORS beats PAPER and LIZARD!" +
+                "\nLIZARD beats SPOCK and and PAPER!" +
+                "\nSPOCK beats SCISSORS and ROCK!\n";
+            for (int i = 0; i < intro.Length; i++)
+            {
+                Console.Write(intro[i]);
+                System.Threading.Thread.Sleep(50);
+            }
+            System.Threading.Thread.Sleep(1000);
+            Console.Clear();
+            for (int i = 0; i < rules.Length; i++)
+            {
+                Console.Write(rules[i]);
+                System.Threading.Thread.Sleep(50);
+            }
+
+        }
+
         public void GameSetUp()
         {
-            Console.WriteLine("Welcome to Rock, Paper, Scissors, Lizard, Spock!\nRules: BEST OUT OF 3 WINS.");
             Console.WriteLine("\nOne or two players? [Type '1' or '2']");
             input = Console.ReadLine();
             Console.Clear();
@@ -239,6 +264,7 @@ namespace rpslsGame
 
         public void Initialize()
         {
+            Intro();
             GameSetUp();
             if (input == "1")
             {
