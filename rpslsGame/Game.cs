@@ -27,6 +27,15 @@ namespace rpslsGame
             aiPlayer2 = new AIPlayer();
         }
 
+        public void ScrollingText(string theString)
+        {
+            for (int i = 0; i < theString.Length; i++)
+            {
+                Console.Write(theString[i]);
+                System.Threading.Thread.Sleep(50);
+            }
+        }
+
         public void Intro()
         {
             intro = "Welcome to Rock, Paper, Scissors, Lizard, Spock!";
@@ -36,20 +45,20 @@ namespace rpslsGame
                 "\nSCISSORS beats PAPER and LIZARD!" +
                 "\nLIZARD beats SPOCK and and PAPER!" +
                 "\nSPOCK beats SCISSORS and ROCK!\n";
-            for (int i = 0; i < intro.Length; i++)
-            {
-                Console.Write(intro[i]);
-                System.Threading.Thread.Sleep(50);
-            }
+            ScrollingText(intro);
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
-            for (int i = 0; i < rules.Length; i++)
-            {
-                Console.Write(rules[i]);
-                System.Threading.Thread.Sleep(50);
-            }
-
+            ScrollingText(rules);
         }
+
+        //public void SelectPlayers()
+        //{
+        //    string prompt = "\nOne or two players? [Type '1' or '2']";
+        //    for ()
+        //    {
+
+        //    }
+        //}
 
         public void GameSetUp()
         {

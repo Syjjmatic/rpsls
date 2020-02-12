@@ -13,9 +13,14 @@ namespace rpslsGame
 
         }
         
-        public override void PlayerSelection()
+        public override void ChooseGesture()
         {
 
+        }
+
+        public override void ChooseName()
+        {
+            
         }
     }
 }

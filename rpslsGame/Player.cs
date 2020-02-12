@@ -10,12 +10,15 @@ namespace rpslsGame
     {
         public string name;
         public int score;
+        public string choice;
 
         public Player()
         {
             score = 0;
         }
 
-        public abstract void PlayerSelection();
+        public abstract void ChooseGesture();
+
+        public abstract void ChooseName();
     }
 }
