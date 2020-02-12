@@ -28,6 +28,7 @@ namespace rpslsGame
             }
 
         }
+
         public override void Gestures()
         {
             Console.Clear();
@@ -37,16 +38,22 @@ namespace rpslsGame
             {
                 Console.WriteLine(i + ".) " + gestures[i]);
             }
+            Console.ForegroundColor = ConsoleColor.Black;
             choice = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+
             while (choice != "0" && choice != "1" && choice != "2" && choice != "3" && choice != "4")
             {
                 Console.Clear();
-                Console.WriteLine("You did choose a correct option. Try again.");
+                string notCorrectOption = "You didn't choose a correct option. Try again.\n";
+                ScrollingText(notCorrectOption);
                 for (int i = 0; i < gestures.Count; i++)
                 {
                     Console.WriteLine(i + ".) " + gestures[i]);
                 }
+                Console.ForegroundColor = ConsoleColor.Black;
                 choice = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
             }
             
 

@@ -12,10 +12,11 @@ namespace rpslsGame
         string rules;
         Player player1;
         Player player2;
+        List<string> gestures;
 
         public Game()
         {
-
+            gestures = new List<string> { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
         }
 
         public void ScrollingText(string theString)
@@ -84,9 +85,13 @@ namespace rpslsGame
         public void CompareChoices()
         {
             string tie = "Tie! Go again!";
-            string player1Round = player1.name + " wins the round!";
-            string player2Round = player2.name + " wins the round!";
-            
+            string player1Round = player1.name + " chooses " + gestures[Convert.ToInt32(player1.choice)] + ".\n" +
+                player2.name + " chooses " + gestures[Convert.ToInt32(player2.choice)] + ".\n\n" +
+                player1.name + " wins the round!";
+            string player2Round = player1.name + " chooses " + gestures[Convert.ToInt32(player1.choice)] + ".\n" +
+                player2.name + " chooses " + gestures[Convert.ToInt32(player2.choice)] + ".\n\n" +
+                player2.name + " wins the round!";
+
 
             if (player1.choice == player2.choice)
             {
@@ -129,6 +134,7 @@ namespace rpslsGame
                 ScrollingText(player2Round);
                 player2.score++;
             }
+
             string playersScoreReport = "\n" + player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score + ".";
             ScrollingText(playersScoreReport);
             Console.WriteLine("\n\nHit [Enter] to continue...");
