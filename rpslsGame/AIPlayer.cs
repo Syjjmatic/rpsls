@@ -30,7 +30,7 @@ namespace rpslsGame
 
         public override void ChooseName()
         {
-            playerNameRequest = "Name your opponent (like in Pokemon): ";
+            playerNameRequest = "Enter AI name: ";
             Console.Clear();
             ScrollingText(playerNameRequest);
             name = Console.ReadLine();

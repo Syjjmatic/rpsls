@@ -10,6 +10,8 @@ namespace rpslsGame
     {
         string intro;
         string rules;
+        string rules1;
+        string enterToContinue;
         Player player1;
         Player player2;
         List<string> gestures;
@@ -17,6 +19,7 @@ namespace rpslsGame
         public Game()
         {
             gestures = new List<string> { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
+            enterToContinue = "\nPress [Enter] to continue.";
         }
 
         public void ScrollingText(string theString)
@@ -31,29 +34,31 @@ namespace rpslsGame
         public void Intro()
         {
             intro = "Welcome to Rock, Paper, Scissors, Lizard, Spock!";
-            rules = "Rules: BEST OUT OF 3 WINS." +
-                "\nROCK beats SCISSORS and LIZARD!" +
+            rules = "Rules: BEST OUT OF 3 WINS.";
+            rules1 = "\n\nROCK beats SCISSORS and LIZARD!" +
                 "\nPAPER beats ROCK and SPOCK!" +
                 "\nSCISSORS beats PAPER and LIZARD!" +
                 "\nLIZARD beats SPOCK and and PAPER!" +
-                "\nSPOCK beats SCISSORS and ROCK!";
+                "\nSPOCK beats SCISSORS and ROCK!\n";
             ScrollingText(intro);
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             ScrollingText(rules);
             System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("\n\nPress [Enter] to continue...");
+            ScrollingText(rules1);
+            System.Threading.Thread.Sleep(1000);
+            ScrollingText(enterToContinue);
             Console.ReadLine();
         }
 
         public string SelectPlayers()
         {
             Console.Clear();
-            string prompt = "One or two players? [Type '1' or '2']\n";
-            string errorInput = "Your input is incorrect. Please type a '1' or '2'.\n";
+            string prompt = "Select a mode: [Type the corresponding number on the left.]\n\n[1] Single player\n[2] Two players\n[3] AI v. AI\n";
+            string errorInput = "Your input is incorrect. Please type a '1', '2', or '3'.\n";
             ScrollingText(prompt);
             string playerNumInput = Console.ReadLine();
-            while (playerNumInput != "1" && playerNumInput != "2")
+            while (playerNumInput != "1" && playerNumInput != "2" && playerNumInput != "3")
             {
                 Console.Clear();
                 ScrollingText(errorInput);
@@ -73,6 +78,11 @@ namespace rpslsGame
             {
                 player1 = new HumanPlayer();
                 player2 = new HumanPlayer();
+            }
+            else if(numberOfPlayers == "3")
+            {
+                player1 = new AIPlayer();
+                player2 = new AIPlayer();
             }
         }
 
@@ -137,7 +147,7 @@ namespace rpslsGame
 
             string playersScoreReport = "\n" + player1.name + "'s score is " + player1.score + " and " + player2.name + "'s score is " + player2.score + ".";
             ScrollingText(playersScoreReport);
-            Console.WriteLine("\n\nHit [Enter] to continue...");
+            ScrollingText(enterToContinue);
             Console.ReadLine();
         }
 
@@ -155,6 +165,10 @@ namespace rpslsGame
                 string playerTwoWins = player2.name = " WINS THE GAME!!";
                 ScrollingText(playerTwoWins);
             }
+
+            Console.WriteLine();
+
+
         }
 
         public void Initialize()
